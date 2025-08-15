@@ -23,7 +23,7 @@ module.exports = {
     try {
       const post = await Post.findById(req.params.id);
 
-      const comments = await Comments.findOne({postID : req.params.id})
+      const comments = await Comments.findAll({postID : req.params.id}).sort({createdAt: 'desc'})
 
       res.render("post.ejs", { post: post, user: req.user, comments:comments || [] });
 
@@ -81,8 +81,8 @@ module.exports = {
   addComment: async(req,res)=>{
     try{
       await Comments.create({
-      comment: req.body.commentText,
-      posterID : req.user.id,
+      commentText: req.body.commentText,
+      userName : req.user.id,
       postID : req.params.id
 
     });

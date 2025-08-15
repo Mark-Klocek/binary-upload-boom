@@ -33,13 +33,14 @@
           <%}%>
 
           <%if(comments.length > 0){ %>
+            <div id="commentContainer"></div>
             <% for (let i = 0; i < comments.length; i++) { %>
-                <div id="commentContainer">
-                  <h3><%= comments.userName %> </h3>
-                  <span><%= comments.commentText %></span>
-                </div>
+                  <div id="individualComment">
+                    <h3><%= comments.userName %> </h3>
+                    <span><%= comments.commentText %></span>
+                  </div>
             <% } %>
-
+              </div>
 
 
           <%}%>

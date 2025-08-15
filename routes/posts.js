@@ -11,7 +11,7 @@ router.post("/createPost", upload.single("file"), postsController.createPost);
 
 router.put("/likePost/:id", postsController.likePost);
 
-router.post('/addComment/:id', postsController.addComment)
+router.post('/addComment/:id', ensureAuth, postsController.addComment)
 
 router.delete("/deletePost/:id", postsController.deletePost);
 
