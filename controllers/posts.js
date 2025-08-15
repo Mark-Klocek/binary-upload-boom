@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+import comments from '../models/comments'
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -73,4 +74,11 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+  addComment: async(req,res)=>{
+    await Comments.create({
+      comment: req.body.commentText,
+      posterID : req.user.id,
+      postID : req.params.id
+    })
+  }
 };

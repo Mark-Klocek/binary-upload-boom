@@ -9,10 +9,6 @@ const CommentSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  userID: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
   postID: {
     type: mongoose.Schema.Types.ObjectId
   },
@@ -22,4 +18,4 @@ const CommentSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Comments", PostSchema);
