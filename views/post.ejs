@@ -21,7 +21,16 @@
         >
           <button class="btn btn-primary fa fa-trash" type="submit"></button>
         </form>
-        <%}%>
+        <%}else{%>
+          <form
+          action="/post/addComment/<%= post.id %>"
+          method="POST"
+          class="col-3"
+        >
+          <input type="text">
+          <button class="btn btn-primary fa fa-pen" type="submit"></button>
+        </form>
+          <%}%>
       </div>
     </div>
     <div class="col-3 mt-5">
