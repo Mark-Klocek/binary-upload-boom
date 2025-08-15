@@ -26,7 +26,7 @@ module.exports = {
       const comments = await Comments.findOne({postID : req.params.id})
 
       res.render("post.ejs", { post: post, user: req.user, comments:comments || [] });
-      
+
     } catch (err) {
       console.log(err);
     }
@@ -79,10 +79,17 @@ module.exports = {
     }
   },
   addComment: async(req,res)=>{
-    await Comments.create({
+    try{
+      await Comments.create({
       comment: req.body.commentText,
       posterID : req.user.id,
       postID : req.params.id
-    })
+
+    });
+    console.log('comment added!')
+    res.redirect(`/post/${req.params.id}`)
+    }catch(err){
+      console.err(err)
+    }
   }
 };
