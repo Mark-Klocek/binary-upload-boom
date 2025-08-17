@@ -23,7 +23,7 @@ module.exports = {
     try {
       const post = await Post.findById(req.params.id);
 
-      const comments = await Comments.findAll({postID : req.params.id}).sort({createdAt: 'desc'})
+      const comments = await Comments.findAll({postID : req.params.id}).sort({createdAt: 'desc'}).lean()
 
       res.render("post.ejs", { post: post, user: req.user, comments:comments || [] });
 
